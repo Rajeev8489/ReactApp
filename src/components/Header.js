@@ -7,8 +7,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { makeStyles } from '@mui/styles';
 
-
-
 const useStyles = makeStyles({
     appbar: {
         backgroundColor: '#424242'
@@ -31,23 +29,23 @@ export default function Header() {
                     </Grid>
                     <Grid item sm></Grid>
                     <Grid item>
-                        <IconButton style ={{color:'white'}}>
+                        <IconButton style={{ color: 'white' }}>
                             <Badge badgeContent={2} color="error">
                                 <NotificationsNoneIcon />
                             </Badge>
                         </IconButton>
 
-                        <IconButton style ={{color:'white'}}>
+                        <IconButton style={{ color: 'white' }}>
                             <Badge badgeContent={4} color="error">
                                 <ChatBubbleOutlineIcon />
                             </Badge>
                         </IconButton>
-                        <IconButton style ={{color:'white'}}>
+                        <IconButton style={{ color: 'white' }}>
                             <Badge>
                                 <SettingsOutlinedIcon />
                             </Badge>
                         </IconButton>
-                        <IconButton style ={{color:'white'}}>
+                        <IconButton style={{ color: 'white' }}>
                             <Badge>
                                 <AccountCircleIcon />
                             </Badge>

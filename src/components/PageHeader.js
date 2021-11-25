@@ -1,27 +1,27 @@
 import React from 'react'
-import { Paper, Card, Typography,Button } from '@mui/material';
+import { Paper, Card, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { createTheme } from '@mui/material/styles';
 
-const themep = createTheme();
-const useStyles = makeStyles(theme => ({
+const theme = createTheme();
+const useStyles = makeStyles(({
     root: {
         backgroundColor: '#fdfdff'
     },
-    pageHeader:{
-        padding: themep.spacing(4),
-        display:'flex',
-        marginBottom:themep.spacing(2)
+    pageHeader: {
+        padding: theme.spacing(4),
+        display: 'flex',
+        marginBottom: theme.spacing(2)
     },
-    pageIcon:{
-        display:'inline-block',
-        padding:themep.spacing(2),
-        color:'#3c44b1'
+    pageIcon: {
+        display: 'inline-block',
+        padding: theme.spacing(2),
+        color: '#3f51b5'
     },
-    pageTitle:{
-        paddingLeft:themep.spacing(4),
-        '& .MuiTypography-subtitle2':{
-            opacity:'0.6'
+    pageTitle: {
+        paddingLeft: theme.spacing(4),
+        '& .MuiTypography-subtitle2': {
+            opacity: '0.6'
         }
     }
 }))

@@ -4,8 +4,7 @@ import SideMenu from '../components/SideMenu';
 import { makeStyles } from '@mui/styles';
 import Header from '../components/Header';
 import { CssBaseline } from '@mui/material';
-import PageHeader from '../components/PageHeader';
-import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
+import Employees from '../Pages/Employees/Employees';
 
 const useStyles = makeStyles({
   appMain: {
@@ -18,20 +17,16 @@ const useStyles = makeStyles({
 function App() {
 
   const classes = useStyles();
-  
+
   return (
     <>
       <SideMenu />
-      <div className={classes.appMain}>  
-      <Header />
-      <PageHeader
-          title="Page Header"
-          subTitle="Page description"
-          icon={<PeopleOutlineOutlinedIcon fontSize="large" />}
-        />
+      <div className={classes.appMain}>
+        <Header />
+        <Employees />
       </div>
       <CssBaseline />
-     
+
     </>
   );
 }

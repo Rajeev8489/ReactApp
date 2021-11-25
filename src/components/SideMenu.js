@@ -1,4 +1,3 @@
-
 import { makeStyles } from '@mui/styles';
 import React from 'react'
 import sidemenuamazon from './Images/sidemenuamazon.jpg';
@@ -25,7 +24,7 @@ export default function SideMenu() {
 
         <div className={classes.sidemenu}>
             <div></div>
-            <Stack alignSelf ="center">
+            <Stack alignSelf="center">
                 <Avatar variant="rounded" alt="this is logo" src={sidemenuamazon} sx={{ width: 300, height: 150 }} />
             </Stack>
         </div>
