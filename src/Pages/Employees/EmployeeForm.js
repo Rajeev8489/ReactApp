@@ -28,15 +28,15 @@ export default function EmployeeForm() {
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
         if ('fullName' in fieldValues)
-            temp.fullName = fieldValues.fullName ? "" : "Fullname is required."
+            temp.fullName = fieldValues.fullName ? "" : "Full Name is required."
         if ('email' in fieldValues)
             temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Email is not valid."
         if ('city' in fieldValues)
-            temp.city = fieldValues.city ? "" : "City required"
+            temp.city = fieldValues.city ? "" : "City is required."
         if ('phoneNumber' in fieldValues)
-            temp.phoneNumber = fieldValues.phoneNumber.length > 9 ? "" : "Phone number required."
+            temp.phoneNumber = fieldValues.phoneNumber.length > 9 ? "" : "Phone number is required."
         if ('departmentId' in fieldValues)
-            temp.departmentId = fieldValues.departmentId ? "" : "Department required"
+            temp.departmentId = fieldValues.departmentId ? "" : "Department is required."
         if ('gender' in fieldValues)
             temp.gender = fieldValues.gender ? "" : "Gender is required."
         if ('dateofjoining' in fieldValues)
