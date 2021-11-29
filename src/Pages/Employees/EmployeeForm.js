@@ -32,13 +32,13 @@ export default function EmployeeForm() {
         if ('email' in fieldValues)
             temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Email is not valid."
         if ('city' in fieldValues)
-            temp.city = fieldValues.city ? "" : "Enter city name"
+            temp.city = fieldValues.city ? "" : "City required"
         if ('phoneNumber' in fieldValues)
             temp.phoneNumber = fieldValues.phoneNumber.length > 9 ? "" : "Phone number required."
         if ('departmentId' in fieldValues)
-            temp.departmentId = fieldValues.departmentId ? "" : "Select department"
+            temp.departmentId = fieldValues.departmentId ? "" : "Department required"
         if ('gender' in fieldValues)
-            temp.gender = fieldValues.gender ? "" : "gender is required."
+            temp.gender = fieldValues.gender ? "" : "Gender is required."
         if ('dateofjoining' in fieldValues)
             temp.dateofjoining = fieldValues.dateofjoining ? "" : "Date of Joining is required."
         setErrors({
