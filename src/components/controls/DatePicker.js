@@ -6,7 +6,7 @@ import DatePicker from '@mui/lab/DatePicker';
 
 export default function Dtpicker(props) {
 
-    const { name, label, value, onChange } = props
+    const { name, label, value,error=null, onChange } = props
 
     const convertToDefEventPara = (name, value) => ({
         target: {
@@ -21,7 +21,7 @@ export default function Dtpicker(props) {
                 name={name}
                 value={value}
                 onChange={date => onChange(convertToDefEventPara(name, date))}
-                renderInput={(params) => <TextField {...params} />}
+                renderInput={(params) => <TextField {...params} {...(error && {error:true, helperText:error})} />}
             />
         </LocalizationProvider>
 

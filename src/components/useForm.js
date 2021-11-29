@@ -14,7 +14,7 @@ export function useForm(initialFValues, validateOnChange = false, validate) {
             [name]: value
         })
         if (validateOnChange)
-            validate({ [name]: value })
+            validate({ [name]: value})
     }
 
     const resetForm = () => {
@@ -30,7 +30,6 @@ export function useForm(initialFValues, validateOnChange = false, validate) {
         setErrors,
         handleInputChange,
         resetForm
-
     }
 }
 
@@ -41,8 +40,8 @@ const useStyles = makeStyles(({
             width: '80%',
             margin: theme.spacing(1)
         }
-    }
-}))
+    }   
+}));
 
 export function Form(props) {
 
