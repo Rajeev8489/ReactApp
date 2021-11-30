@@ -28,19 +28,19 @@ export default function EmployeeForm() {
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
         if ('fullName' in fieldValues)
-            temp.fullName = fieldValues.fullName ? "" : "Full Name is required."
+            temp.fullName = fieldValues.fullName ? "" : "Required."
         if ('email' in fieldValues)
-            temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Email is not valid."
+            temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Email is not valid"
         if ('city' in fieldValues)
-            temp.city = fieldValues.city ? "" : "City is required."
+            temp.city = fieldValues.city ? "" : "Required"
         if ('phoneNumber' in fieldValues)
-            temp.phoneNumber = fieldValues.phoneNumber.length > 9 ? "" : "Phone number is required."
+            temp.phoneNumber = fieldValues.phoneNumber.length > 9 ? "" : "Required"
         if ('departmentId' in fieldValues)
-            temp.departmentId = fieldValues.departmentId ? "" : "Department is required."
+            temp.departmentId = fieldValues.departmentId ? "" : "Required"
         if ('gender' in fieldValues)
-            temp.gender = fieldValues.gender ? "" : "Gender is required."
+            temp.gender = fieldValues.gender ? "" : "Required"
         if ('dateofjoining' in fieldValues)
-            temp.dateofjoining = fieldValues.dateofjoining ? "" : "Date of Joining is required."
+            temp.dateofjoining = fieldValues.dateofjoining ? "" : "Required"
         setErrors({
             ...temp
         })
@@ -70,7 +70,7 @@ export default function EmployeeForm() {
     return (
         <Form onSubmit={handleSubmit}>
             <Grid container>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                     <Controls.Input
                         name="fullName"
                         label="Full Name"
@@ -100,7 +100,7 @@ export default function EmployeeForm() {
                         error={errors.phoneNumber}
                     />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                     <Controls.RadioGroup
                         name="gender"
                         label="Gender"

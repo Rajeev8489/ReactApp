@@ -10,7 +10,7 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         position: 'absolute',
         left: '0px',
-        width: '320px',
+        width: '150px',
         height: '100%',
         backgroundColor: '#212121',
     }
@@ -25,7 +25,7 @@ export default function SideMenu() {
         <div className={classes.sidemenu}>
             <div></div>
             <Stack alignSelf="center">
-                <Avatar variant="rounded" alt="this is logo" src={sidemenuamazon} sx={{ width: 300, height: 150 }} />
+                <Avatar variant="rounded" alt="this is logo" src={sidemenuamazon} sx={{ width: 150, height: 150 }} />
             </Stack>
         </div>
 

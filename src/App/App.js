@@ -8,7 +8,7 @@ import Employees from '../Pages/Employees/Employees';
 
 const useStyles = makeStyles({
   appMain: {
-    paddingLeft: '320px',
+    paddingLeft: '150px',
     width: '100%'
 
   }
