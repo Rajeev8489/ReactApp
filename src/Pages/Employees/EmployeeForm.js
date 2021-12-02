@@ -92,7 +92,7 @@ export default function EmployeeForm() {
                         onChange={handleInputChange}
                         error={errors.city}
                     />
-                    <Controls.Input
+                    <Controls.Phone
                         label="Phone Number"
                         name="phoneNumber"
                         value={values.phoneNumber}
