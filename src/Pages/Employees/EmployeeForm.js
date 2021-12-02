@@ -11,7 +11,6 @@ const genderItems = [
     { id: 'other', title: 'Other' },
 ]
 
-
 const initialFValues = {
     fullName: '',
     email: '',
@@ -20,7 +19,7 @@ const initialFValues = {
     city: '',
     departmentId: '',
     dateofjoining: new Date(),
-    isPermanent: ''
+    isPermanent: false
 }
 
 export default function EmployeeForm() {
@@ -33,8 +32,11 @@ export default function EmployeeForm() {
             temp.email = (/$^|.+@.+..+/).test(fieldValues.email) ? "" : "Email is not valid"
         if ('city' in fieldValues)
             temp.city = fieldValues.city ? "" : "Required"
-        if ('phoneNumber' in fieldValues)
-            temp.phoneNumber = fieldValues.phoneNumber.length > 9 ? "" : "Required"
+        if ('phoneNumber' in fieldValues) {
+            temp.phoneNumber = fieldValues.phoneNumber ? "" : "Required";
+            if (fieldValues.phoneNumber != '')
+                temp.phoneNumber = (/^[0-9]{10}$/.test(fieldValues.phoneNumber)) ? "" : "Phone Number should be 10 digit numeric value";
+        }
         if ('departmentId' in fieldValues)
             temp.departmentId = fieldValues.departmentId ? "" : "Required"
         if ('gender' in fieldValues)
@@ -48,7 +50,6 @@ export default function EmployeeForm() {
             return Object.values(temp).every(x => x == "")
     }
 
-
     const {
         values,
         setValues,
@@ -59,10 +60,9 @@ export default function EmployeeForm() {
     } = useForm(initialFValues, true, validate);
 
     const handleSubmit = e => {
-        e.preventDefault()
+        // e.preventDefault()  --  commented to test Table functionalities
         if (validate()) {
             employeeService.insertEmployee(values)
-            window.alert(JSON.stringify(values));
             resetForm()
         }
     }
@@ -72,8 +72,8 @@ export default function EmployeeForm() {
             <Grid container>
                 <Grid item xs={12} md={6}>
                     <Controls.Input
-                        name="fullName"
                         label="Full Name"
+                        name="fullName"
                         value={values.fullName}
                         onChange={handleInputChange}
                         error={errors.fullName}
@@ -102,32 +102,32 @@ export default function EmployeeForm() {
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Controls.RadioGroup
-                        name="gender"
                         label="Gender"
+                        name="gender"
                         value={values.gender}
                         onChange={handleInputChange}
                         items={genderItems}
                         error={errors.gender}
                     />
                     <Controls.Select
-                        name="departmentId"
                         label="Department"
+                        name="departmentId"
                         value={values.departmentId}
                         onChange={handleInputChange}
                         options={employeeService.getDepartmentCollection()}
                         error={errors.departmentId}
                     />
                     <Controls.DatePicker
-                        name="dateofjoining"
                         label="Date of Joining"
+                        name="dateofjoining"
                         value={values.dateofjoining}
                         onChange={handleInputChange}
                         error={errors.dateofjoining}
                     />
 
                     <Controls.Checkbox
-                        name="isPermanent"
                         label="Permanent Employee"
+                        name="isPermanent"
                         value={values.isPermanent}
                         onChange={handleInputChange}
                     />
@@ -140,9 +140,7 @@ export default function EmployeeForm() {
                             onClick={resetForm}
                         />
                     </Stack>
-
                 </Grid>
-
             </Grid>
         </Form>
     )
