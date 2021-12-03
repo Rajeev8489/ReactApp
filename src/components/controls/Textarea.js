@@ -1,18 +1,20 @@
-import { TextField } from '@mui/material';
+import { InputLabel , TextareaAutosize } from '@mui/material';
 import React from 'react'
 
-export default function Input(props) {
+export default function Textarea(props) {
 
     const { name,label,value,error=null, onChange } = props;
     return (
-        <TextField
+        <div style={{paddingLeft:'9px'}}>
+        <InputLabel>{label}</InputLabel>
+        <TextareaAutosize
             variant="outlined"
-            label={label}
             name={name}
             value={value}
             onChange={onChange}
             {...(error && {error:true,helperText:error})}
-        
+            style={{ height: 200,width:'90%' }}
         />
+        </div>
     )
 }

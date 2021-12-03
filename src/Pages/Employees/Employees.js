@@ -13,8 +13,8 @@ import { Search } from '@mui/icons-material';
 const theme = createTheme();
 const useStyles = makeStyles(({
     pageContent: {
-        margin: theme.spacing(5),
-        padding: theme.spacing(3)
+        margin: theme.spacing(1),
+        padding: theme.spacing(10),
     },
     searchInput: {
         width: '100%'
@@ -62,18 +62,6 @@ export default function Employees() {
             />
             <Paper className={classes.pageContent}>
                 <EmployeeForm />
-                <Toolbar>
-                    <Controls.Input
-                        label="Search Employees by Full Name"
-                        className={classes.searchInput}
-                        InputProps={{
-                            startAdornment: (<InputAdornment position="start">
-                                <Search />
-                            </InputAdornment>)
-                        }}
-                        onChange={handleSearch}
-                    />
-                </Toolbar>
                 <TblContainer>
                     <TblHead />
                     <TableBody>

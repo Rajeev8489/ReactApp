@@ -7,6 +7,8 @@ import { CssBaseline } from '@mui/material';
 import Employees from '../Pages/Employees/Employees';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@emotion/react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Contact from '../Pages/Contact';
 
 const theme = createTheme({
 
@@ -39,8 +41,9 @@ const theme = createTheme({
 
 const useStyles = makeStyles({
   appMain: {
-    paddingLeft: '150px',
-    width: '100%'
+    width: '100%',
+    height:'100%'
+
 
   }
 })
@@ -51,10 +54,15 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <SideMenu />
+      
       <div className={classes.appMain}>
-        <Header />
-        <Employees />
+         <Router>
+         <Header />
+          <Routes>
+            <Route path="/" element={<Employees />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </Router>
       </div>
       <CssBaseline />
     </ThemeProvider>

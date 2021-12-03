@@ -12,7 +12,7 @@ const useStyles = makeStyles({
         left: '0px',
         width: '150px',
         height: '100%',
-        backgroundColor: '#212121',
+        backgroundColor: 'black',
     }
 })
 

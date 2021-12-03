@@ -1,9 +1,9 @@
-import { FormControl, FormControlLabel, Checkbox as MuiCheckbox } from '@mui/material';
+import { FormControl, FormControlLabel, Checkbox as MuiCheckbox, FormHelperText } from '@mui/material';
 import React from 'react'
 
 export default function Checkbox(props) {
 
-    const { name, label, value, onChange } = props;
+    const { name, label, value, onChange, error=null } = props;
 
     const convertToDefEventPara = (name, value) => ({
         target: {
@@ -12,7 +12,7 @@ export default function Checkbox(props) {
     })
 
     return (
-        <FormControl>
+        <FormControl error={error}>
             <FormControlLabel
                 control={<MuiCheckbox
                     name={name}
@@ -22,6 +22,7 @@ export default function Checkbox(props) {
                 />}
                 label={label}
             />
+            {error && <FormHelperText>{error}</FormHelperText>}
         </FormControl>
     )
 }
