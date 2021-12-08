@@ -6,6 +6,8 @@ import DatePicker from './DatePicker'
 import Button from './Button'
 import Phone from './Phone';
 import Textarea from './Textarea';
+import Checkboxlist from './Checkboxlist'
+import ActionButton from './ActionButton';
 
 const Controls = {
       Input,
@@ -15,7 +17,9 @@ const Controls = {
       DatePicker,
       Button,
       Phone,
-      Textarea
+      Textarea,
+      Checkboxlist,
+      ActionButton
 }
 
 export default Controls;

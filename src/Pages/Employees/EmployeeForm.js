@@ -4,6 +4,7 @@ import Controls from '../../components/controls/Controls';
 import { Grid } from '@mui/material';
 import * as employeeService from '../../Services/employeeService';
 import Stack from '@mui/material/Stack';
+import Employees from './Employees';
 
 const genderItems = [
     { id: 'male', title: 'Male' },
@@ -12,6 +13,7 @@ const genderItems = [
 ]
 
 const initialFValues = {
+    id: 0,
     fullName: '',
     email: '',
     phoneNumber: '',
@@ -19,10 +21,15 @@ const initialFValues = {
     city: '',
     departmentId: '',
     dateofjoining: new Date(),
-    isPermanent: false
+    isPermanent: false,
+    english: false,
+    french: false,
+    spanish: false,
+    german: false
 }
 
-export default function EmployeeForm() {
+export default function EmployeeForm(props) {
+    const { addOrEdit, recordForEdit } = props
 
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
@@ -60,12 +67,17 @@ export default function EmployeeForm() {
     } = useForm(initialFValues, true, validate);
 
     const handleSubmit = e => {
-        // e.preventDefault()  --  commented to test Table functionalities
+        e.preventDefault()
         if (validate()) {
-            employeeService.insertEmployee(values)
-            resetForm()
+            addOrEdit(values, resetForm);
         }
     }
+    useEffect(() => {
+        if (recordForEdit != null)
+            setValues({
+                ...recordForEdit
+            })
+    }, [recordForEdit])
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -85,22 +97,6 @@ export default function EmployeeForm() {
                         onChange={handleInputChange}
                         error={errors.email}
                     />
-                    <Controls.Input
-                        label="City"
-                        name="city"
-                        value={values.city}
-                        onChange={handleInputChange}
-                        error={errors.city}
-                    />
-                    <Controls.Phone
-                        label="Phone Number"
-                        name="phoneNumber"
-                        value={values.phoneNumber}
-                        onChange={handleInputChange}
-                        error={errors.phoneNumber}
-                    />
-                </Grid>
-                <Grid item xs={12} md={6}>
                     <Controls.RadioGroup
                         label="Gender"
                         name="gender"
@@ -117,6 +113,32 @@ export default function EmployeeForm() {
                         options={employeeService.getDepartmentCollection()}
                         error={errors.departmentId}
                     />
+                    <Controls.Checkbox
+                        label="Permanent Employee"
+                        name="isPermanent"
+                        value={values.isPermanent}
+                        onChange={handleInputChange}
+                    />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                    <Controls.Input
+                        label="City"
+                        name="city"
+                        value={values.city}
+                        onChange={handleInputChange}
+                        error={errors.city}
+                    />
+                    <Controls.Phone
+                        label="Phone Number"
+                        name="phoneNumber"
+                        value={values.phoneNumber}
+                        onChange={handleInputChange}
+                        error={errors.phoneNumber}
+                    />
+                    <Controls.Checkboxlist
+                        values={values}
+                        onChange={handleInputChange}
+                    />
                     <Controls.DatePicker
                         label="Date of Joining"
                         name="dateofjoining"
@@ -124,14 +146,7 @@ export default function EmployeeForm() {
                         onChange={handleInputChange}
                         error={errors.dateofjoining}
                     />
-
-                    <Controls.Checkbox
-                        label="Permanent Employee"
-                        name="isPermanent"
-                        value={values.isPermanent}
-                        onChange={handleInputChange}
-                    />
-                    <Stack direction="row" spacing={2}>
+                    <Stack direction="row" spacing={2} sx={{ p: 2 }}>
                         <Controls.Button
                             type="submit"
                             text="Submit" />

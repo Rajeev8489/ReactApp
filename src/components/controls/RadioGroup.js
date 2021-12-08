@@ -2,10 +2,14 @@ import { FormControl, FormControlLabel, FormHelperText, FormLabel, Radio, RadioG
 import React from 'react'
 
 export default function RadioGroup(props) {
-    const { name, label, value,error=null, onChange, items } = props;
+    const { name, label, value, error = null, onChange, items } = props;
     return (
-        <FormControl {...(error && {error:true,helperText:error})}>
-            <FormLabel>{label}</FormLabel>
+        <FormControl 
+        component="fieldset"
+        {...(error && { error: true, helperText: error })}
+            sx={{ border: '1px groove lightgrey', p: 1 }}
+        >
+            <FormLabel component="legend">{label}</FormLabel>
             <MuiRadioGroup row
                 name={name}
                 value={value}
@@ -18,7 +22,7 @@ export default function RadioGroup(props) {
                     )
                 }
             </MuiRadioGroup>
-            { error && <FormHelperText>{error}</FormHelperText>}
+            {error && <FormHelperText>{error}</FormHelperText>}
         </FormControl>
     )
 }

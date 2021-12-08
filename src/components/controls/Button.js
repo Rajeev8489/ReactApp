@@ -8,10 +8,9 @@ const useStyles = makeStyles({
     root: {
         '& .MuiButton-root': {
             margin: theme.spacing(1, 'auto'),
-            textTransform: 'none'
+            textTransform: 'none',
         }
     }
-
 });
 
 export default function Button(props) {
