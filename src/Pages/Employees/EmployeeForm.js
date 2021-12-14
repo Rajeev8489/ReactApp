@@ -4,7 +4,7 @@ import Controls from '../../components/controls/Controls';
 import { Grid } from '@mui/material';
 import * as employeeService from '../../Services/employeeService';
 import Stack from '@mui/material/Stack';
-import Employees from './Employees';
+import Progress from '../../components/Progress';
 
 const genderItems = [
     { id: 'male', title: 'Male' },
@@ -30,6 +30,7 @@ const initialFValues = {
 
 export default function EmployeeForm(props) {
     const { addOrEdit, recordForEdit } = props
+    const [openProgress, setOpenProgress] = useState(false);
 
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
@@ -68,8 +69,13 @@ export default function EmployeeForm(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
+        setOpenProgress(true);
         if (validate()) {
-            addOrEdit(values, resetForm);
+            setTimeout(function () {
+                addOrEdit(values, resetForm);
+                setOpenProgress(false);
+            }, 9500);
+
         }
     }
     useEffect(() => {
@@ -149,7 +155,8 @@ export default function EmployeeForm(props) {
                     <Stack direction="row" spacing={2} sx={{ p: 2 }}>
                         <Controls.Button
                             type="submit"
-                            text="Submit" />
+                            text="Submit"
+                        />
                         <Controls.Button
                             text="Reset"
                             onClick={resetForm}
@@ -157,6 +164,10 @@ export default function EmployeeForm(props) {
                     </Stack>
                 </Grid>
             </Grid>
+            <Progress
+                openProgress={openProgress}
+                setOpenProgress={setOpenProgress}
+            />
         </Form>
     )
 }

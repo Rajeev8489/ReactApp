@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, createTheme, Tooltip } from '@mui/material';
+import { IconButton, createTheme, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 
@@ -8,33 +8,25 @@ const useStyles = makeStyles(({
     root: {
         minWidth: 0,
         margin: theme.spacing(0.5)
-    },
-    secondary: {
-        backgroundColor: theme.palette.error.light,
-        '& .MuiButton-label': {
-            color: theme.palette.error.main,
-        }
-    },
-    primary: {
-        backgroundColor: theme.palette.secondary.light,
-        '& .MuiButton-label': {
-            color: theme.palette.secondary.main,
-        }
-    },
+    }
 }))
 
 export default function ActionButton(props) {
 
-    const { color, children, onClick, title } = props;
+    const { children, onClick, title, variant, color, size, ...other } = props;
     const classes = useStyles();
 
     return (
         <Tooltip title={title} arrow>
-            <Button
-                className={`${classes.root} ${classes[color]}`}
+            <IconButton
+                variant={variant || "contained"}
+                size={size || "small"}
+                color={color || "error"}
+                className={classes.root}
+                {...other}
                 onClick={onClick}>
                 {children}
-            </Button>
+            </IconButton >
         </Tooltip>
     )
 }

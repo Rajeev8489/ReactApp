@@ -42,7 +42,7 @@ const theme = createTheme({
 const useStyles = makeStyles({
   appMain: {
     width: '100%',
-    height:'100%'
+    height: '100%'
 
 
   }
@@ -54,10 +54,10 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      
+
       <div className={classes.appMain}>
-         <Router>
-         <Header />
+        <Router>
+          <Header />
           <Routes>
             <Route path="/" element={<Employees />} />
             <Route path="/contact" element={<Contact />} />
